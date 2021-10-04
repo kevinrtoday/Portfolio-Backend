@@ -8,7 +8,6 @@ const app = express();
 require("dotenv").config();
 
 // database connection
-
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
@@ -19,6 +18,9 @@ mongoose
   });
 
 // routes
+app.get("/", () => {
+  res.json({ message: "reached API" });
+});
 
 // listent to port
 const port = process.env.PORT;
