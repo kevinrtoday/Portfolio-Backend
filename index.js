@@ -18,7 +18,7 @@ mongoose
   });
 
 // routes
-app.get("/", () => {
+app.get("/", (req, res) => {
   res.json({ message: "reached API" });
 });
 
