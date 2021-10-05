@@ -1,6 +1,6 @@
 const express = require("express");
-
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const app = express();
 
@@ -17,10 +17,14 @@ mongoose
     console.log("Database connection error");
   });
 
+// general middlewares
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cors());
+
 // routes
-app.get("/", (req, res) => {
-  res.json({ message: "reached API" });
-});
+app.use("/api/auth", require("./routes/admin"));
+app.use("/api/projects", require("./routes/projects"));
 
 // listent to port
 const port = process.env.PORT;
