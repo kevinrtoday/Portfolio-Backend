@@ -11,10 +11,10 @@ require("dotenv").config();
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
-    console.log("Database connected");
+    console.log("Database connected ✔️ ");
   })
   .catch(() => {
-    console.log("Database connection error");
+    console.log("Database connection error ❌");
   });
 
 // general middlewares
@@ -23,8 +23,8 @@ app.use(express.json());
 app.use(cors());
 
 // routes
-app.use("/api/auth", require("./routes/admin"));
-app.use("/api/projects", require("./routes/projects"));
+app.use("/api/auth", require("./routes/auth"));
+app.use("/api/projects", require("./routes/project"));
 
 // listent to port
 const port = process.env.PORT;
