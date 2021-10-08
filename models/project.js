@@ -1,18 +1,16 @@
-const { Schema, model } = require("mongoose");
+const { model, Schema } = require("mongoose");
 
 const ProjectSchema = Schema({
-  display: {
-    type: String,
-    required: true,
-  },
   name: {
     type: String,
-    required: true,
+    required: [true, "The name field is required"],
+    unique: true,
   },
+
   description: {
     type: String,
-    required: true,
   },
+  img: { type: String },
 });
 
 module.exports = model("Project", ProjectSchema);
